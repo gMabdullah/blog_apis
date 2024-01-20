@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    return res.send("Welcom to blogs site");
+    res.send("Welcom to blogs site");
 })
 
 // app.get("/register", (req, res) => {
