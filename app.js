@@ -14,7 +14,7 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.use("/", (req, res) => {
     res.send("Welcom to blogs site");
 })
 
