@@ -10,10 +10,11 @@ const PORT = process.env.PORT || 8000;
 app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.get("/", (req, res) => {
-    return res.send("hi there");
-})
+// app.get("/", (req, res) => {
+//     return res.send("hi there");
+// })
 
 // app.get("/register", (req, res) => {
 //     res.render("register")

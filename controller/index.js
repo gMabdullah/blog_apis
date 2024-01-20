@@ -3,6 +3,17 @@ import RegisterModel from "../model/index.js";
 export const registerUser = async (req, res) => {
     const {firstname, lastname, email, password, cpassword } = req.body;
 
+    try{
+
+        const existingUser = await RegisterModel.findOne({ email })
+
+    if(existingUser){
+        return res.status(400).json({
+            status: "Failed",
+            results: "Email is already registered",
+        })
+    }
+
     if(!firstname){
         return res.status(400).json({
             status: "Failed",
@@ -22,7 +33,6 @@ export const registerUser = async (req, res) => {
           });
     }
 
-    try{
         const results = new RegisterModel({
             firstname, lastname, email, password, cpassword
         })
@@ -32,10 +42,9 @@ export const registerUser = async (req, res) => {
         res.status(200).json({
             status: "Success",
             results: "User Successfully Created",
-          });
+        });
 
     }catch(error){
-        // console.error("Error saving user:", error)
         res.status(500)
         .json({
             status: "Failed",

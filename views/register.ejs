@@ -35,7 +35,7 @@
 </head>
 <body>
 
-    <form action="/register_user" method="post">
+    <form id="registrationForm" onsubmit="registerUser(event)" method="post">
         <label for="firstname">First Name:</label>
         <input type="text" name="firstname">
 
@@ -59,13 +59,18 @@
 
             const form = document.getElementById("registrationForm");
             const formData = new FormData(form);
+            const formDataObject = {};
+            
+            formData.forEach((value, key) => {
+                formDataObject[key] = value;
+            });
 
-            fetch("https://blog-apis-one.vercel.app/register_user", {
+            fetch("http://localhost:8000/register_user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(Object.fromEntries(formData)),
+                body: JSON.stringify(formDataObject),
             })
             .then(response => {
                 if (!response.ok) {
