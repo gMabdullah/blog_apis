@@ -29,6 +29,6 @@ app.get("/", (req, res) => {
 //     // res.send(results).status(200);
 // })
 
-app.use("/", signupRoutes)
+app.use("/api", signupRoutes)
 
 app.listen(PORT, () => console.log(`App is running on port ${PORT}`))
