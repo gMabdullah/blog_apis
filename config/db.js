@@ -4,11 +4,9 @@ const mongoDBURI = 'mongodb+srv://your-username:your-password@your-cluster.mongo
 const mongooseOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
 };
 
-mongoose.connect(process.env.PORT, mongooseOptions)
+mongoose.connect(process.env.MONGO_URI, mongooseOptions)
   .then(() => {
     console.log('Connected to MongoDB');
     // Continue with your application logic
