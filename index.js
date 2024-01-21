@@ -9,14 +9,21 @@ const PORT = process.env.PORT || 8000;
 
 app.set("view engine", "ejs");
 
-app.use(cors())
+// app.use(cors())
+app.use(cors({
+    origin: 'https://blog-client-ebon.vercel.app/', // Replace with your client's origin
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  }));
+  
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use("/", (req, res) => {
-    res.send("Welcom to blogs site");
-})
 
 app.listen(PORT, () => console.log(`App is running on port ${PORT}`))
 
 app.use("/api", signupRoutes)
+
+app.use("/", (req, res) => {
+    res.send("Welcom to blogs site");
+})

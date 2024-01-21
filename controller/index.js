@@ -2,13 +2,12 @@ import RegisterModel from "../model/index.js";
 
 export const registerUser = async (req, res) => {
     const {firstname, lastname, email, password, cpassword } = req.body;
-
     try{
 
         const existingUser = await RegisterModel.findOne({ email })
 
     if(existingUser){
-        return res.status(400).json({
+        return res.status(409).json({
             status: "Failed",
             results: "Email is already registered",
         })
