@@ -7,7 +7,7 @@ import cors from "cors";
 const app = express();
 const PORT = process.env.PORT || 8000; 
 
-app.set("view engine", "ejs");
+// app.set("view engine", "ejs");
 
 // app.use(cors())
 app.use(cors({
@@ -15,15 +15,14 @@ app.use(cors({
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   }));
-  
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 
 app.listen(PORT, () => console.log(`App is running on port ${PORT}`))
 
 app.use("/api", signupRoutes)
 
 app.use("/", (req, res) => {
-    res.send("Welcom to blogs site");
+    res.send("Welcome to blogs site");
 })
