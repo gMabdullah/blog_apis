@@ -3,6 +3,7 @@ import "dotenv/config";
 import signupRoutes from "./routes/index.js";
 import "./config/db.js";
 import cors from "cors";
+import { getUsers } from "./controller/index.js";
 
 const app = express();
 const PORT = process.env.PORT || 8000; 
@@ -23,6 +24,4 @@ app.listen(PORT, () => console.log(`App is running on port ${PORT}`))
 
 app.use("/api", signupRoutes)
 
-app.use("/", (req, res) => {
-    res.send("Welcome to blogs site");
-})
+app.use("/", getUsers)
