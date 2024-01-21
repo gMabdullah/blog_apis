@@ -2,8 +2,10 @@ import mongoose from "mongoose";
 const mongoDBURI = 'mongodb+srv://your-username:your-password@your-cluster.mongodb.net/your-database-name';
 
 const mongooseOptions = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useNewUrlParser: true,  // Although deprecated, including it won't harm and keeps backward compatibility
+  useUnifiedTopology: true,  // Although deprecated, including it won't harm and keeps backward compatibility
 };
 
 mongoose.connect(process.env.MONGO_URI, mongooseOptions)
