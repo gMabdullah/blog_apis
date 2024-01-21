@@ -11,11 +11,11 @@ const PORT = process.env.PORT || 8000;
 // app.set("view engine", "ejs");
 
 // app.use(cors())
-app.use(cors({
-    origin: 'https://blog-client-ebon.vercel.app', // Replace with your client's origin
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-}));
+// app.use(cors({
+//     origin: 'https://blog-client-ebon.vercel.app', // Replace with your client's origin
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     credentials: true,
+// }));
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'https://blog-client-ebon.vercel.app');
@@ -30,8 +30,8 @@ app.use(express.json());
 
 app.listen(PORT, () => console.log(`App is running on port ${PORT}`))
 
-app.use("/api", (req, res) => {
-    res.send("Home Page")
-})
+app.use("/api", signupRoutes)
 
-app.use("/", getUsers)
+// app.use("/", (req, res) => {
+//     res.send("Welcome to Blog site")
+// })

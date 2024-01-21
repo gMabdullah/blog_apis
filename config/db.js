@@ -6,7 +6,7 @@ const mongooseOptions = {
   useUnifiedTopology: true,
 };
 
-mongoose.connect(process.env.MONGO_URI, mongooseOptions)
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('Connected to MongoDB');
     // Continue with your application logic
