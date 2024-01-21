@@ -22,6 +22,6 @@ app.use(express.json());
 
 app.listen(PORT, () => console.log(`App is running on port ${PORT}`))
 
-app.use("/api", signupRoutes)
-
 app.use("/", getUsers)
+
+app.use("/api", signupRoutes)
