@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 8000;
 
 // app.use(cors())
 app.use(cors({
-    origin: 'https://blog-client-ebon.vercel.app/', // Replace with your client's origin
+    origin: 'https://blog-client-ebon.vercel.app', // Replace with your client's origin
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   }));
