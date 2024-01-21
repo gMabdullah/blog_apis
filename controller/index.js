@@ -51,3 +51,28 @@ export const registerUser = async (req, res) => {
           });
     }
 }
+
+export const getUsers = async (req, res) => {
+    try {
+        const allUsers = await RegisterModel.find();
+
+        if(allUsers.length === 0){
+            res.status(200).json({
+                message: "No Users Found",
+                results: allUsers
+            })
+        }
+
+        res.status(200).json({
+            status: "Success",
+            results: allUsers
+        })
+
+    } catch (error) {
+        res.status(500)
+        .json({
+            status: "Failed",
+            results: error,
+          });
+    }
+}
