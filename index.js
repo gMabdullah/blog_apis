@@ -15,15 +15,23 @@ app.use(cors({
     origin: 'https://blog-client-ebon.vercel.app', // Replace with your client's origin
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
-  }));
+}));
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://blog-client-ebon.vercel.app');
+    res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Credentials', true);
+    next();
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.listen(PORT, () => console.log(`App is running on port ${PORT}`))
 
-app.use("/", getUsers)
-
 app.use("/api", (req, res) => {
     res.send("Home Page")
 })
+
+app.use("/", getUsers)
