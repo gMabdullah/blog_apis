@@ -24,4 +24,6 @@ app.listen(PORT, () => console.log(`App is running on port ${PORT}`))
 
 app.use("/", getUsers)
 
-app.use("/api", signupRoutes)
+app.use("/api", (req, res) => {
+    res.send("Home Page")
+})
