@@ -3,7 +3,7 @@ import { registerUser, getUsers } from "../controller/index.js";
 
 const router = Router();
 
-// router.post("/register_user", registerUser)
+router.post("/register_user", registerUser)
 
 router.get("/register", getUsers);
 
